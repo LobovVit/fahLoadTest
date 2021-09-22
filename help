@@ -1,0 +1,11 @@
+ssh appfah@eb-arp-dev-fah
+ssh vitaliy@172.31.15.33
+
+scp fahtest_v_1.tar appfah@eb-arp-dev-fah:~/
+scp appfah@eb-arp-dev-fah:~/fahtest_v_1.tar ./
+
+
+docker build -t fahtest_v_1 ./
+docker run -d -v /home/vitaliy/fahTest:/app/fahTest fahtest_v_1
+docker save -o fahtest_v_1.tar fahtest_v_1
+docker load -i fahtest_v_1.tar
